@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .backgroundimg {
+            height: 100vh;
+            width: 100%;
+            background-image: url("{% static 'images/bcimg.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            color: #fff;
+    }
+    button{
+        width: 110px;
+        height: 40px;
+        border-radius: 30px;
+        background-color: chocolate;
+    }
+    button>a{
+        text-decoration: none;
+        font-size: 15px;
+        color: black;
+    }
+
+    .th{
+        color: #f6ee05;
+    }
+    table{
+        border: #f6ee05;
+        border-collapse: collapse;
+    }
+    .btn1{
+        width: 80px;
+        height: 30px;
+        border-radius: 30px;
+        background-color: rgb(30, 153, 210);
+    }
+    .btn1>a{
+        text-decoration: none;
+        font-size: 15px;
+        color: black;
+    }
+    .btn{
+        width: 80px;
+        height: 30px;
+        border-radius: 30px;
+        background-color: rgb(169, 10, 10);
+    }
+    .btn>a{
+        text-decoration: none;
+        font-size: 15px;
+        color: #fff;
+    }
+
+    </style>
+</head>
+<body>
+   
+    <div class="backgroundimg">
+    <h1>Contact List</h1>
+
+    <button><a href="/add/">Add Contact</a></button>
+
+    <table border="2">
+        <tr class="th">
+            <th >Name</th><th>Email</th><th>Phone</th><th>Actions</th>
+        </tr>
+
+        {% for c in contacts %}
+        <tr>
+            <td>{{c.first_name}} {{c.last_name}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.phone}}</td>
+            <td>
+                <button class="btn1">
+                    <a href="/edit/{{c.id}}/">Edit</a>
+                </button>
+                <button class="btn">
+                    <a href="/delete/{{c.id}}/">Delete</a>
+                </button>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+   
+</body>
+</html>
+
+
+
+
+
+
+
